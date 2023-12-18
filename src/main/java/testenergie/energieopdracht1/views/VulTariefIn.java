@@ -9,41 +9,71 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import testenergie.energieopdracht1.Classes.KlantControl;
+import testenergie.energieopdracht1.Classes.VerbruikControl;
 
 public class VulTariefIn extends Parent {
-private GridPane root;
-    public VulTariefIn(Stage stage){
+
+private KlantControl showKlant;
+private VerbruikControl prijs;
+    public VulTariefIn(Stage stage, KlantControl showKlant){
+        this.showKlant = showKlant;
+        prijs = new VerbruikControl();
+
+
 
         Label tarief = new Label("Tarief");
         tarief.setStyle("-fx-font-size: 24; -fx-font-weight: Bold");
 
 
         GridPane root = new GridPane();
-        TextField tarStroom = new TextField();
-        TextField tarGas = new TextField();
+        TextField txtTarStroom = new TextField();
+        TextField txtTarGas = new TextField();
 
-        root.add(tarief,0,0);
+
 
         Button btnVerbruik = new Button("Ga naar verbruik");
 
-        root.add(tarStroom,0,1);
-        root.add(tarGas,0,2 );
+        Label klantInfo = new Label();
+        klantInfo.setStyle("-fx-font-size: 20; -fx-font-weight: Bold; -fx-text-fill: Brown");
+
+
+        klantInfo.setText("Klant nummer: " + showKlant.getKlantNummer() + ", \nVoor Naam:"
+                + showKlant.getVoorNaam() + ", \nAchternaam:" + showKlant.getAchterNaam() +
+                ", \nVoorschot:" + showKlant.getVoorschot() );
+
+        root.add(tarief,0,0);
+
+        root.add(txtTarStroom,0,1);
+        root.add(txtTarGas,0,2 );
 
         root.add(btnVerbruik,0,3);
+
+        root.add(klantInfo,2,5);
 
 
      this.getChildren().add(root);
 
 
 
-        setupBtnVerbruikAction(btnVerbruik, stage);
+        setupBtnVerbruikAction(btnVerbruik, stage, txtTarStroom, txtTarGas, showKlant, prijs);
+
 
     }
 
-    private void setupBtnVerbruikAction(Button btnVerbruik, Stage stage){
+    private void setupBtnVerbruikAction(Button btnVerbruik, Stage stage, TextField txtTarStroom, TextField txtTarGas, KlantControl showKlant, VerbruikControl prijs){
         btnVerbruik.setOnAction(e -> {
-            VulVerbruikIn thirdScene = new VulVerbruikIn(stage);
+
+            String tarStroom = txtTarStroom.getText();
+            double tarStroomDouble = Double.parseDouble(tarStroom);
+            String tarGas = txtTarGas.getText();
+            double tarGasDouble = Double.parseDouble(tarGas);
+            prijs.setTarief(tarStroomDouble,tarGasDouble);
+
+
+            VulVerbruikIn thirdScene = new VulVerbruikIn(stage, showKlant, prijs);
             Scene scene3 = new Scene(thirdScene, stage.getWidth(), stage.getHeight());
+
 
             stage.setScene(scene3);
         });

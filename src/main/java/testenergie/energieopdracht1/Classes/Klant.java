@@ -6,16 +6,16 @@ public class Klant {
     private Integer klantnr;
     private String vNaam;
     private String aNaam;
-    private Double voorschot;
+    private double voorschot;
 
-    public Klant(Integer klantnr, String vNaam, String aNaam, Double voorschot) {
-        this.klantnr = klantnr;
-        this.vNaam = vNaam;
-        this.aNaam = aNaam;
-        this.voorschot = voorschot;
+    public Klant(Integer klantnr, String vNaam, String aNaam, double voorschot) {
+        this.klantnr = this.klantnr;
+        this.vNaam = this.vNaam;
+        this.aNaam = this.aNaam;
+        this.voorschot = this.voorschot;
     }
 
-    public Integer getKlantnr() {
+    public Integer getKlantnr(Integer klantnr, String vNaam, String aNaam, double voorschot ) {
         return klantnr;
     }
 
@@ -43,7 +43,7 @@ public class Klant {
         return voorschot;
     }
 
-    public void setVoorschot(Double voorschot) {
+    public void setVoorschot(double voorschot) {
         this.voorschot = voorschot;
     }
 }
