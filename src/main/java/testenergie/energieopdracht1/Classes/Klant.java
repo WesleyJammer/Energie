@@ -7,16 +7,27 @@ public class Klant {
     private String vNaam;
     private String aNaam;
     private double voorschot;
+    private double voorschotGas;
 
-    public Klant(Integer klantnr, String vNaam, String aNaam, double voorschot) {
+    public Klant(Integer klantnr, String vNaam, String aNaam, double voorschot, double voorschotGas) {
         this.klantnr = this.klantnr;
         this.vNaam = this.vNaam;
         this.aNaam = this.aNaam;
         this.voorschot = this.voorschot;
+        this.voorschotGas = this.voorschotGas;
     }
 
-    public Integer getKlantnr(Integer klantnr, String vNaam, String aNaam, double voorschot ) {
+
+    public Integer getKlantnr() {
         return klantnr;
+    }
+
+    public double getVoorschotGas() {
+        return voorschotGas;
+    }
+
+    public void setVoorschotGas(double voorschotGas) {
+        this.voorschotGas = voorschotGas;
     }
 
     public void setKlantnr(Integer klantnr) {

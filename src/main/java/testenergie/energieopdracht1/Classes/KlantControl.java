@@ -10,30 +10,36 @@ private String voorNaam;
 private String achterNaam;
 private double voorschot;
 
+private double voorschotGas;
+
 
     public KlantControl() {
         this.klantlijst = new ArrayList<Object>();
     }
+// gegevens uit de arraylist ook daadwerkelijk toevoegen aan de lijst
+public void addKlantToList(Integer klantnr, String vNaam, String aNaam, double voorschot, double voorschotGas){
 
-public void addKlantToList(Integer klantnr, String vNaam, String aNaam, double voorschot){
-
-Klant k = new Klant(klantnr, vNaam, aNaam, voorschot);
+Klant k = new Klant(klantnr, vNaam, aNaam, voorschot, voorschotGas);
 
 klantlijst.add(k);
 
 
     }
 
-    public void setKlantData(Integer klantNummer, String voorNaam, String achterNaam, double voorschot){
+    public void setKlantData(Integer klantNummer, String voorNaam, String achterNaam, double voorschot, double voorschotGas){
 
         this.klantNummer = klantNummer;
         this.voorNaam = voorNaam;
         this.achterNaam = achterNaam;
         this.voorschot = voorschot;
+        this.voorschotGas= voorschotGas;
         System.out.println("Setting klantNummer: " + klantNummer);
 
 
     }
+
+
+
 
     public Integer getKlantNummer() {
 
@@ -52,5 +58,6 @@ klantlijst.add(k);
         return voorschot;
     }
 
+    public double getVoorschotGas() {return voorschotGas;}
 
 }
